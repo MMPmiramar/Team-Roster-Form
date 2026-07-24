@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>Team Registration Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <form id="teamForm" autocomplete="on">
+        <h2>Team Registration</h2>
+        
+        <div class="field">
+            <label for="teamName">Team Name</label>
+            <input type="text" id="teamName" name="teamName" autocomplete="organization" required>
+        </div>
+
+        <div class="field">
+            <label for="contactName">Contact Name</label>
+            <input type="text" id="contactName" name="contactName" autocomplete="name" required>
+        </div>
+
+        <div class="field">
+    		<label for="phone">Phone Number</label>
+    		<!-- Pattern allows numbers and dashes, handled cleanly by the script input filter -->
+    		<input type="tel" id="phone" name="phone" autocomplete="tel" maxlength="12" placeholder="XXX-XXX-XXXX" required>
+    		<div id="phoneError" class="error-message"></div>
+	</div>
+	
+        <div class="field">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" autocomplete="email" required>
+        </div>
+
+        <div class="field">
+            <label style="display: block; margin-bottom: 10px; font-weight: 600;">Text Color Choice</label>
+            <input type="hidden" id="textColor" name="textColor" required>
+            
+            <div class="color-picker-grid">
+                <div class="color-card" data-value="#FFFFFF" data-name="WHITE">
+                    <div class="color-swatch" style="background-color: #FFFFFF; border: 1px solid #ddd;">
+                        <svg class="checkmark" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    </div>
+                    <span>WHITE</span>
+                </div>
+                <div class="color-card" data-value="#000000" data-name="BLACK">
+                    <div class="color-swatch" style="background-color: #000000;">
+                        <svg class="checkmark" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    </div>
+                    <span>BLACK</span>
+                </div>
+                <div class="color-card" data-value="#4169E1" data-name="ROYAL">
+                    <div class="color-swatch" style="background-color: #4169E1;">
+                        <svg class="checkmark" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    </div>
+                    <span>ROYAL</span>
+                </div>
+                <div class="color-card" data-value="#000080" data-name="NAVY">
+                    <div class="color-swatch" style="background-color: #000080;">
+                        <svg class="checkmark" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    </div>
+                    <span>NAVY</span>
+                </div>
+                <div class="color-card" data-value="#87CEEB" data-name="SKY BLUE">
+                    <div class="color-swatch" style="background-color: #87CEEB;">
+                        <svg class="checkmark" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    </div>
+                    <span>SKY BLUE</span>
+                </div>
+                <div class="color-card" data-value="#FF8C00" data-name="ORANGE">
+                    <div class="color-swatch" style="background-color: #FF8C00;">
+                        <svg class="checkmark" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    </div>
+                    <span>ORANGE</span>
+                </div>
+                <div class="color-card" data-value="#FF0000" data-name="RED">
+                    <div class="color-swatch" style="background-color: #FF0000;">
+                        <svg class="checkmark" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    </div>
+                    <span>RED</span>
+                </div>
+                <div class="color-card" data-value="#800000" data-name="MAROON">
+                    <div class="color-swatch" style="background-color: #800000;">
+                        <svg class="checkmark" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    </div>
+                    <span>MAROON</span>
+                </div>
+                <div class="color-card" data-value="#8B4513" data-name="BROWN">
+                    <div class="color-swatch" style="background-color: #8B4513;">
+                        <svg class="checkmark" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    </div>
+                    <span>BROWN</span>
+                </div>
+                <div class="color-card" data-value="#FFD700" data-name="GOLD">
+                    <div class="color-swatch" style="background-color: #FFD700;">
+                        <svg class="checkmark" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    </div>
+                    <span>GOLD</span>
+                </div>
+                <div class="color-card" data-value="#228B22" data-name="FOREST GREEN">
+                    <div class="color-swatch" style="background-color: #228B22;">
+                        <svg class="checkmark" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    </div>
+                    <span>FOREST GREEN</span>
+                </div>
+                <div class="color-card" data-value="#008080" data-name="TEAL">
+                    <div class="color-swatch" style="background-color: #008080;">
+                        <svg class="checkmark" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    </div>
+                    <span>TEAL</span>
+                </div>
+                <div class="color-card" data-value="#800080" data-name="PURPLE">
+                    <div class="color-swatch" style="background-color: #800080;">
+                        <svg class="checkmark" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    </div>
+                    <span>PURPLE</span>
+                </div>
+                <div class="color-card" data-value="#808080" data-name="GRAY">
+                    <div class="color-swatch" style="background-color: #808080;">
+                        <svg class="checkmark" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    </div>
+                    <span>GRAY</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="roster-section">
+            <label style="display: block; font-size: 18px; margin-bottom: 10px; font-weight: bold;">Player Roster</label>
+            <div id="playerContainer">
+                <div class="player-row" data-id="1">
+                    <div class="row-inputs">
+                        <input type="number" placeholder="Jersey #" class="jersey" min="0" max="99" required>
+                        <input type="text" placeholder="First Name" class="firstName" required>
+                        <input type="text" placeholder="Last Name" class="lastName" required>
+                        <input type="text" placeholder="Nickname (Optional)" class="nickname">
+                    </div>
+                    <div class="print-options">
+                        <span>Print on Jersey:</span>
+                        <label><input type="radio" name="printTarget_1" value="first"> First Name</label>
+                        <label><input type="radio" name="printTarget_1" value="last" checked> Last Name</label>
+                        <label><input type="radio" name="printTarget_1" value="nick"> Nickname</label>
+                    </div>
+                    <button type="button" class="remove-btn">✕ Remove</button>
+                </div>
+            </div>
+            <button type="button" class="add-btn" id="addPlayerBtn">+ Add Player</button>
+        </div>
+
+        <div class="btn-container">
+            <button type="submit" class="submit-btn">Review Registration</button>
+        </div>
+    </form>
+
+    <div id="previewModal" class="modal">
+    <div class="modal-content">
+        <h3>Verify Your Details</h3>
+        <p>Please check your entry carefully before final submission.</p>
+        <div class="preview-group"><div class="preview-label">Team Name:</div><div id="pTeamName" class="preview-value"></div></div>
+        <div class="preview-group"><div class="preview-label">Contact Name:</div><div id="pContactName" class="preview-value"></div></div>
+        <div class="preview-group"><div class="preview-label">Phone:</div><div id="pPhone" class="preview-value"></div></div>
+        <div class="preview-group"><div class="preview-label">Email:</div><div id="pEmail" class="preview-value"></div></div>
+        
+        <!-- PASTE THE MODIFIED SNIPPET DIRECTLY HERE: -->
+        <div class="preview-group">
+            <div class="preview-label">Text Color:</div>
+            <div id="pTextColor" class="preview-value">
+                <span id="pTextColorName"></span>
+                <span id="pTextColorSwatch" style="display:inline-block; width:20px; height:20px; border-radius:4px; vertical-align:middle; margin-left:8px; border:1px solid #ccc;"></span>
+            </div>
+        </div>
+        
+        <div class="preview-label" style="margin-top:15px;">Player Roster Summary:</div>
+        <table class="preview-roster-table">
+                <thead>
+                    <tr><th>Jersey</th><th>Full Name</th><th>Nickname</th><th>Name on Jersey</th></tr>
+                </thead>
+                <tbody id="p_rosterBody"></tbody>
+            </table>
+
+            </table>
+
+            <div class="modal-buttons">
+                <button type="button" class="edit-btn" id="closeModalBtn">← Edit Details</button>
+                <button type="button" class="confirm-btn" id="finalSubmitBtn">Confirm & Submit</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Links to your clean automation script -->
+    <script src="script.js"></script>
+</body>
+</html>
