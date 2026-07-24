@@ -7,9 +7,16 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <form id="teamForm" autocomplete="on">
-        <h2>Team Registration</h2>
+        <form id="teamForm" autocomplete="on">
+        <!-- REVISED HEADER CONTAINER: Aligns your JPG logo to the right -->
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #eee; padding-bottom: 10px; margin-bottom: 24px; gap: 15px;">
+            <h2 style="margin: 0; border: none; padding: 0; font-size: 24px;">Team Registration</h2>
+            <img src="MMPLogo.jpg" alt="Logo" style="max-height: 50px; width: auto; display: block; object-fit: contain;">
+        </div>
         
+        <!-- FIX: Added clear name and autocomplete values to satisfy Safari's auto-fill engine -->
+        <div class="field">
+
         <div class="field">
             <label for="teamName">Team Name</label>
             <input type="text" id="teamName" name="teamName" autocomplete="organization" required>
