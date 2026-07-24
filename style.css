@@ -46,6 +46,12 @@ label {
   margin-bottom: 5px; 
 } 
 
+.print-options input[type="radio"] {
+  width: 18px;
+  height: 18px;
+  vertical-align: middle;
+}
+
 /* ==========================================================================
    UPDATED BASE INPUT STYLES (Added font-size: 16px to stop mobile zoom)
    ========================================================================== */
