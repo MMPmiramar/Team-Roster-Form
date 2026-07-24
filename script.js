@@ -1,5 +1,5 @@
 // Paste your production Google Web App URL inside these quotes
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyCqejnyUaYBGrJGbe3nKTIeDuamzJiZgUU0L9diU0lQGtJjzTvYTwd1PqJgGTGnO3DEA/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyixcVNkejOmnSUeaUI6OrWq_7jYUzOZ5s-fjc7eMv840H5uVVmgFdKXVLE8w6t_2ohag/exec";
 const playerContainer = document.getElementById('playerContainer');
 const addPlayerBtn = document.getElementById('addPlayerBtn');
 const previewModal = document.getElementById('previewModal');
