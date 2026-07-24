@@ -1,0 +1,415 @@
+body { 
+    font-family: sans-serif; 
+    margin: 0; 
+    padding: 40px 20px; 
+    min-height: 100vh; 
+    box-sizing: border-box; 
+    color: #333; 
+    /* Static Step & Repeat Background Configuration */ 
+    background-color: #ff671f; 
+    /* FIX: Removed double ## syntax error */ 
+    /* REPLACE THE LINK INSIDE THE QUOTES WITH YOUR ACTUAL DIRECT .JPG LINK */ 
+    background-image: url('MMPLogo.jpg'); 
+    background-repeat: repeat; 
+    background-position: top left; 
+    background-size: 325px auto; 
+    /* Adjust this value to shrink or grow the tiled pattern size */ 
+    background-attachment: fixed; 
+} 
+
+/* Semi-transparent protective layer ensures text remains 100% legible over your image */ 
+body::before { 
+    content: ""; 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    background: rgba(244, 244, 249, 0.88); 
+    z-index: -1; 
+} 
+
+form { 
+    max-width: 750px; 
+    background: white; 
+    padding: 30px; 
+    border-radius: 8px; 
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+    margin: 0 auto; 
+} 
+
+.field { 
+    margin-bottom: 20px; 
+} 
+
+label { 
+    display: block; 
+    font-weight: bold; 
+    margin-bottom: 5px; 
+} 
+
+/* ==========================================================================
+   NEW COLOR PICKER GRID & CHECKMARK STYLES
+   ========================================================================== */
+.color-picker-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    gap: 12px;
+    margin-top: 5px;
+}
+
+.color-card {
+    border: 2px solid #ccc;
+    border-radius: 6px;
+    padding: 8px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    background: #fff;
+}
+
+.color-card:hover {
+    border-color: #888;
+}
+
+.color-card.selected {
+    border-color: #0056b3;
+    background-color: #f0f7ff;
+    box-shadow: 0 0 5px rgba(0, 86, 179, 0.3);
+}
+
+.color-swatch {
+    width: 100%;
+    height: 45px;
+    border-radius: 4px;
+    margin-bottom: 6px;
+    box-sizing: border-box;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.color-card span {
+    font-size: 13px;
+    font-weight: 500;
+    color: #333;
+}
+
+/* Checkmark SVG Animation Core Engine */
+.color-swatch .checkmark {
+    width: 20px;
+    height: 20px;
+    fill: #ffffff;
+    opacity: 0;
+    transform: scale(0.6);
+    transition: all 0.2s ease-in-out;
+    filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.5));
+}
+
+.color-card.selected .color-swatch .checkmark {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Explicit Contrast Swatch Rules (Light Overrides) */
+.color-card[data-value="#FFFFFF"].selected .color-swatch .checkmark,
+.color-card[data-value="#FFD700"].selected .color-swatch .checkmark {
+    fill: #333333;
+    filter: none;
+}
+
+/* ==========================================================================
+   REST OF LAYOUT ELEMENTS (UNTOUCHED)
+   ========================================================================== */
+.print-options input[type="radio"] { 
+    width: 18px; 
+    height: 18px; 
+    vertical-align: middle; 
+} 
+
+/* ========================================================================== UPDATED BASE INPUT STYLES (Added font-size: 16px to stop mobile zoom) ========================================================================== */ 
+input[type="text"], input[type="tel"], input[type="email"], input[type="number"], select { 
+    font-size: 16px; /* <-- PLACED HERE: Stops mobile screen auto-zoom layout shift */ 
+    width: 100%; 
+    padding: 10px; 
+    border: 1px solid #ccc; 
+    border-radius: 4px; 
+    box-sizing: border-box; 
+} 
+
+.roster-section { 
+    border-top: 2px solid #eee; 
+    padding-top: 20px; 
+    margin-top: 20px; 
+} 
+
+.player-row { 
+    background: #f9f9fb; 
+    border: 1px solid #e1e1e7; 
+    padding: 15px; 
+    border-radius: 6px; 
+    margin-bottom: 15px; 
+    position: relative; 
+} 
+
+.row-inputs { 
+    display: flex; 
+    gap: 10px; 
+    margin-bottom: 10px; 
+    flex-wrap: wrap; 
+} 
+
+.row-inputs .jersey { 
+    width: 80px; 
+} 
+
+.row-inputs input:not(.jersey) { 
+    flex: 1; 
+    min-width: 130px; 
+} 
+
+.print-options { 
+    display: flex; 
+    gap: 15px; 
+    align-items: center; 
+    background: #fff; 
+    padding: 8px 12px; 
+    border-radius: 4px; 
+    border: 1px dashed #ccc; 
+    font-size: 14px; 
+    flex-wrap: wrap; /* Allows text and radio buttons to wrap gracefully if needed */ 
+} 
+
+.print-options span { 
+    font-weight: bold; 
+    color: #555; 
+} 
+
+.print-options label { 
+    display: inline-flex; 
+    align-items: center; 
+    gap: 5px; 
+    font-weight: normal; 
+    margin-bottom: 0; 
+    cursor: pointer; 
+} 
+
+.remove-btn { 
+    position: absolute; 
+    right: 15px; 
+    bottom: 15px; 
+    background: #dc3545; 
+    color: white; 
+    border: none; 
+    padding: 8px 12px; 
+    border-radius: 4px; 
+    cursor: pointer; 
+} 
+
+.remove-btn:hover { 
+    background: #bd2130; 
+} 
+
+.btn-container { 
+    display: flex; 
+    gap: 10px; 
+    margin-top: 20px; 
+} 
+
+.add-btn { 
+    background: #28a745; 
+    color: white; 
+    border: none; 
+    padding: 10px 15px; 
+    border-radius: 4px; 
+    cursor: pointer; 
+} 
+
+.add-btn:hover { 
+    background: #218838; 
+} 
+
+.submit-btn { 
+    background: #007BFF; 
+    color: white; 
+    border: none; 
+    padding: 12px 20px; 
+    border-radius: 4px; 
+    cursor: pointer; 
+    font-size: 16px; 
+    flex: 1; 
+} 
+
+.submit-btn:hover { 
+    background: #0056b3; 
+} 
+
+.modal { 
+    display: none; 
+    position: fixed; 
+    z-index: 1000; 
+    left: 0; 
+    top: 0; 
+    width: 100%; 
+    height: 100%; 
+    background: rgba(0,0,0,0.5); 
+    overflow-y: auto; 
+    padding: 10px; /* Prevents modal edges from bleeding into browser screen edges */ 
+    box-sizing: border-box; 
+} 
+
+.modal-content { 
+    background: white; 
+    margin: 5% auto; 
+    padding: 30px; 
+    max-width: 650px; 
+    border-radius: 8px; 
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2); 
+    box-sizing: border-box; 
+    width: 100%; 
+} 
+
+.modal h3 { 
+    margin-top: 0; 
+    border-bottom: 2px solid #007BFF; 
+    padding-bottom: 8px; 
+} 
+
+.preview-group { 
+    margin-bottom: 12px; 
+} 
+
+.preview-label { 
+    font-weight: bold; 
+    color: #666; 
+    font-size: 14px; 
+} 
+
+.preview-value { 
+    font-size: 16px; 
+    margin-top: 2px; 
+} 
+
+.preview-roster-table { 
+    width: 100%; 
+    border-collapse: collapse; 
+    margin-top: 15px; 
+    font-size: 15px; 
+} 
+
+.preview-roster-table th, .preview-roster-table td { 
+    border-bottom: 1px solid #ddd; 
+    padding: 8px; 
+    text-align: left; 
+} 
+
+.preview-roster-table th { 
+    background: #f8f9fa; 
+} 
+
+.modal-buttons { 
+    display: flex; 
+    gap: 15px; 
+    margin-top: 25px; 
+} 
+
+.edit-btn { 
+    background: #6c757d; 
+    color: white; 
+    border: none; 
+    padding: 12px 20px; 
+    border-radius: 4px; 
+    cursor: pointer; 
+    flex: 1; 
+} 
+
+.edit-btn:hover { 
+    background: #5a6268; 
+} 
+
+.confirm-btn { 
+    background: #28a745; 
+    color: white; 
+    border: none; 
+    padding: 12px 20px; 
+    border-radius: 4px; 
+    cursor: pointer; 
+    flex: 1; 
+    font-size: 16px; 
+    font-weight: bold; 
+} 
+
+.confirm-btn:hover { 
+    background: #218838; 
+} 
+
+/* ========================================================================== MOBILE RESPONSIVENESS MEDIA QUERY Targets screens smaller than 600px wide (Smartphones) ========================================================================== */ 
+@media screen and (max-width: 600px) { 
+    body { 
+        padding: 15px 10px; /* Shrinks container body space on narrow layouts */ 
+    } 
+    form { 
+        padding: 20px 15px; /* Optimizes padding inside the form box */ 
+    } 
+    /* Accessibility fix: increase interactive height for thumbs */ 
+    input[type="text"], input[type="tel"], input[type="email"], input[type="number"], select, .add-btn, .submit-btn, .edit-btn, .confirm-btn, .remove-btn { 
+        padding: 12px; /* Increases target area size */ 
+    } 
+    /* Forces input blocks inside player rows to stack neatly */ 
+    .row-inputs { 
+        flex-direction: column; 
+        gap: 12px; 
+    } 
+    /* Expands jersey fields to fill full horizontal viewport columns */ 
+    .row-inputs .jersey { 
+        width: 100%; 
+    } 
+    /* Makes room at the bottom of the player row box for the remove action button */ 
+    .player-row { 
+        padding-bottom: 65px; 
+    } 
+    /* FIX: Explicitly resets right boundary so button sits correctly on the bottom */ 
+    .remove-btn { 
+        left: 15px; 
+        right: 15px; 
+        width: auto; 
+        text-align: center; 
+        bottom: 15px; 
+    } 
+    /* FIX: Prevents modal table text overflow from breaking layouts */ 
+    .preview-roster-table { 
+        font-size: 13px; 
+        display: block; /* Allows horizontal scroll wrapper behavior */ 
+        overflow-x: auto; /* Adds native horizontal swipe indicator to table if wide */ 
+        white-space: nowrap; /* Keeps headers clean */ 
+    } 
+    .preview-roster-table th, .preview-roster-table td { 
+        padding: 8px 6px; 
+    } 
+    /* Converts stacked layout fields into vertical mobile column blocks */ 
+    .modal-buttons, .btn-container { 
+        flex-direction: column; 
+        gap: 10px; 
+    } 
+}
+/* Inline Field Error Typography rules */
+.error-message {
+    color: #dc3545;
+    font-size: 13px;
+    font-weight: 600;
+    margin-top: 5px;
+    display: none; /* Kept invisible until validation catches a mistake */
+    animation: fadeInError 0.2s ease-in-out;
+}
+
+/* Red wrapper outline indicator for inputs during bad validation states */
+.field-error-border {
+    border-color: #dc3545 !important;
+    background-color: #fff8f8 !important;
+}
+
+@keyframes fadeInError {
+    from { opacity: 0; transform: translateY(-3px); }
+    to { opacity: 1; transform: translateY(0); }
+}
