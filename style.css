@@ -46,7 +46,11 @@ label {
   margin-bottom: 5px; 
 } 
 
+/* ==========================================================================
+   UPDATED BASE INPUT STYLES (Added font-size: 16px to stop mobile zoom)
+   ========================================================================== */
 input[type="text"], input[type="tel"], input[type="email"], input[type="number"], select { 
+  font-size: 16px; /* <-- PLACED HERE: Stops mobile screen auto-zoom layout shift */
   width: 100%; 
   padding: 10px; 
   border: 1px solid #ccc; 
