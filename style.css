@@ -261,51 +261,65 @@ input[type="text"], input[type="tel"], input[type="email"], input[type="number"]
 }
 
 /* ==========================================================================
-   MOBILE RESPONSIVENESS MEDIA QUERY 
+   MOBILE RESPONSIVENESS MEDIA QUERY
    Targets screens smaller than 600px wide (Smartphones)
    ========================================================================== */
 @media screen and (max-width: 600px) {
   body {
     padding: 15px 10px; /* Shrinks container body space on narrow layouts */
   }
-  
+
   form {
     padding: 20px 15px; /* Optimizes padding inside the form box */
   }
-  
-  /* Forces input blocks inside player rows to stack neatly stacked list layers */
+
+  /* Accessibility fix: increase interactive height for thumbs */
+  input[type="text"], input[type="tel"], input[type="email"], input[type="number"], select,
+  .add-btn, .submit-btn, .edit-btn, .confirm-btn, .remove-btn {
+    padding: 12px; /* Increases target area size */
+  }
+
+  /* Forces input blocks inside player rows to stack neatly */
   .row-inputs {
     flex-direction: column;
-    gap: 8px;
+    gap: 12px;
   }
-  
+
   /* Expands jersey fields to fill full horizontal viewport columns */
   .row-inputs .jersey {
     width: 100%;
   }
-  
+
   /* Makes room at the bottom of the player row box for the remove action button */
   .player-row {
-    padding-bottom: 60px; 
+    padding-bottom: 65px; 
   }
-  
+
+  /* FIX: Explicitly resets right boundary so button sits correctly on the bottom */
   .remove-btn {
-    left: 15px; /* Stretch button right across the bottom boundary line */
+    left: 15px;
+    right: 15px;
+    width: auto; 
     text-align: center;
+    bottom: 15px;
   }
-  
-  /* Aligns preview tables nicely by scaling text layouts */
+
+  /* FIX: Prevents modal table text overflow from breaking layouts */
   .preview-roster-table {
     font-size: 13px;
+    display: block;         /* Allows horizontal scroll wrapper behavior */
+    overflow-x: auto;       /* Adds native horizontal swipe indicator to table if wide */
+    white-space: nowrap;    /* Keeps headers clean */
   }
-  
+
   .preview-roster-table th, .preview-roster-table td {
-    padding: 6px 4px;
+    padding: 8px 6px;
   }
-  
+
   /* Converts stacked layout fields into vertical mobile column blocks */
   .modal-buttons, .btn-container {
     flex-direction: column;
     gap: 10px;
   }
 }
+
