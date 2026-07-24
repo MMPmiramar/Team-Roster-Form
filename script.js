@@ -251,6 +251,10 @@ document.getElementById('teamForm').addEventListener('submit', function(e) {
 finalSubmitBtn.addEventListener('click', () => {
     finalSubmitBtn.disabled = true;
     finalSubmitBtn.innerText = "Sending Data...";
+
+    // Explicitly append the logo reference inside the payload object structure
+    // This allows your Google Apps Script backend email layout engine to read and attach it
+    globalFormData.logoUrl = "MMPLogo.jpg"; 
     
     fetch(SCRIPT_URL, {
         method: 'POST',
@@ -258,7 +262,9 @@ finalSubmitBtn.addEventListener('click', () => {
         mode: 'no-cors'
     })
     .then(() => {
-        alert('Registration successfully submitted!');
+        // CHANGED: Custom form submission popup notification response text block message
+        alert("Registration successfully submitted!\n\nThank you for the opportunity to serve you!");
+        
         previewModal.style.display = 'none';
         document.getElementById('teamForm').reset();
         rowCounter = 1;
